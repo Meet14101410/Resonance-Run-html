@@ -1,0 +1,18 @@
+let player = document.getElementById("player");
+let scoreText = document.getElementById("score");
+let score = 0;
+
+document.addEventListener("keydown", e => {
+  let x = player.offsetLeft;
+
+  if (e.key === "ArrowLeft" && x > 0) player.style.left = (x - 10) + "px";
+  if (e.key === "ArrowRight" && x < 370) player.style.left = (x + 10) + "px";
+
+  let t = document.getElementById("target").getBoundingClientRect();
+  let p = player.getBoundingClientRect();
+
+  if (Math.abs(t.left - p.left) < 10) {
+    score++;
+    scoreText.textContent = "Score: " + score;
+  }
+});
