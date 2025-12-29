@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resonance Run</title>
+<style>
+  body { font-family: Arial; text-align: center; }
+  #game { width: 400px; height: 300px; border: 2px solid #000; margin: 20px auto; position: relative; }
+  #player, #target { width: 30px; height: 30px; position: absolute; left: 185px; }
+  #player { background: green; bottom: 10px; }
+  #target { background: orange; top: 10px; animation: vibrate 1s infinite; }
+  @keyframes vibrate { 0%{left:150px;}50%{left:220px;}100%{left:150px;} }
+</style>
+</head>
+<body>
+
+<h2>Resonance Run</h2>
+<p>Use ← and → to align with the vibrating block!</p>
+
+<div id="game">
+  <div id="player"></div>
+  <div id="target"></div>
+</div>
+
+<p id="score">Score: 0</p>
+
+<script>
+let player = document.getElementById("player");
+let score = 0;
+
+document.addEventListener("keydown", e => {
+  let x = player.offsetLeft;
+  if(e.key==="ArrowLeft" && x>0) player.style.left = (x-10)+"px";
+  if(e.key==="ArrowRight" && x<370) player.style.left = (x+10)+"px";
+
+  let target = document.getElementById("target").getBoundingClientRect();
+  let p = player.getBoundingClientRect();
+
+  if(Math.abs(target.left - p.left) < 10) {
+    score++;
+    document.getElementById("score").innerText = "Score: " + score;
+  }
+});
+</script>
+
+</body>
+</html>
