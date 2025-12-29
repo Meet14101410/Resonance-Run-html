@@ -1,0 +1,37 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+#game {
+  width: 400px;
+  height: 300px;
+  border: 2px solid #000;
+  margin: 20px auto;
+  position: relative;
+}
+
+#player,
+#target {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 185px;
+}
+
+#player {
+  background: green;
+  bottom: 10px;
+}
+
+#target {
+  background: orange;
+  top: 10px;
+  animation: vibrate 1s infinite;
+}
+
+@keyframes vibrate {
+  0% { left: 150px; }
+  50% { left: 220px; }
+  100% { left: 150px; }
+}
